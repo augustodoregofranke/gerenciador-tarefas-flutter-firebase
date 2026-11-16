@@ -50,6 +50,5 @@ app.*.map.json
 # Ferramentas instaladas localmente (Flutter SDK, firebase-tools, flutterfire)
 .tools/
 
-# Entregues separadamente
+# Entregue separadamente
 *.pdf
-demonstracao.mp4

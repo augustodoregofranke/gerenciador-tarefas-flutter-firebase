@@ -7,7 +7,6 @@ Aplicativo Flutter para gerenciamento de tarefas pessoais com Firebase Authentic
 - Git
 - Android Studio com Android SDK e um emulador (ou celular Android com depuração USB)
 - Flutter 3.50 ou superior
-- Node.js (somente se for usar outro projeto Firebase)
 
 ## Instalação do Flutter (local, dentro da pasta do projeto)
 
@@ -20,7 +19,7 @@ git clone -b stable --depth 1 https://github.com/flutter/flutter.git .tools/flut
 Em cada terminal novo, configure as variáveis (macOS/Linux):
 
 ```
-export PATH="$PWD/.tools/flutter/bin:$PWD/.tools/npm/node_modules/.bin:$PWD/.tools/pub-cache/bin:$PATH"
+export PATH="$PWD/.tools/flutter/bin:$PATH"
 export PUB_CACHE="$PWD/.tools/pub-cache"
 ```
 
@@ -38,37 +37,6 @@ A configuração do Firebase já está incluída no projeto (`lib/firebase_optio
 flutter run
 ```
 
-## Usar outro projeto Firebase (opcional)
-
-1. Crie um projeto no console do Firebase (https://console.firebase.google.com).
-2. Em Authentication > Método de login, ative "E-mail/senha".
-3. Em Realtime Database, crie um banco de dados.
-4. Na aba Regras do Realtime Database, cole as regras abaixo e publique (cada usuário só acessa suas próprias tarefas):
-
-```
-{
-  "rules": {
-    "tarefas": {
-      "$uid": {
-        ".read": "auth != null && auth.uid == $uid",
-        ".write": "auth != null && auth.uid == $uid"
-      }
-    }
-  }
-}
-```
-
-5. Instale o firebase-tools e o FlutterFire CLI na pasta do projeto, faça login e gere a configuração:
-
-```
-npm install --prefix .tools/npm firebase-tools
-dart pub global activate flutterfire_cli
-firebase login
-flutterfire configure --platforms=android
-```
-
-Esse comando substitui os arquivos `lib/firebase_options.dart` e `android/app/google-services.json`.
-
 ## Estrutura dos dados no Realtime Database
 
 ```
@@ -77,3 +45,48 @@ tarefas/
     <id da tarefa>/
       titulo, descricao, dataVencimento, prioridade, concluida
 ```
+
+## Capturas de tela
+
+<table>
+  <tr>
+    <td align="center"><img src="capturas/01_login.png" width="180"><br>Login</td>
+    <td align="center"><img src="capturas/02_cadastro_validacao.png" width="180"><br>Validação do cadastro</td>
+    <td align="center"><img src="capturas/03_cadastro_preenchido.png" width="180"><br>Cadastro de usuário</td>
+    <td align="center"><img src="capturas/04_home.png" width="180"><br>Tela inicial</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="capturas/05_drawer.png" width="180"><br>Menu lateral</td>
+    <td align="center"><img src="capturas/06_login_erro.png" width="180"><br>Erro de autenticação</td>
+    <td align="center"><img src="capturas/07_cadastro_tarefa.png" width="180"><br>Cadastro de tarefa</td>
+    <td align="center"><img src="capturas/08_lista_tarefas.png" width="180"><br>Lista de tarefas</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="capturas/09_detalhes.png" width="180"><br>Detalhes da tarefa</td>
+    <td align="center"><img src="capturas/10_editar_tarefa.png" width="180"><br>Edição de tarefa</td>
+    <td align="center"><img src="capturas/11_lista_editada.png" width="180"><br>Tarefa editada</td>
+    <td align="center"><img src="capturas/12_confirmar_exclusao.png" width="180"><br>Exclusão de tarefa</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="capturas/13_lista_apos_exclusao.png" width="180"><br>Após a exclusão</td>
+    <td align="center"><img src="capturas/14_lista_concluida.png" width="180"><br>Tarefa concluída</td>
+    <td align="center"><img src="capturas/15_home_contadores.png" width="180"><br>Contadores</td>
+    <td align="center"><img src="capturas/16_sobre.png" width="180"><br>Sobre o aplicativo</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="capturas/17_config_claro.png" width="180"><br>Configurações (claro)</td>
+    <td align="center"><img src="capturas/18_config_escuro.png" width="180"><br>Configurações (escuro)</td>
+    <td align="center"><img src="capturas/19_drawer_escuro.png" width="180"><br>Menu (escuro)</td>
+    <td align="center"><img src="capturas/20_tarefas_escuro.png" width="180"><br>Tarefas (escuro)</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="capturas/21_cadastro_tarefa_escuro.png" width="180"><br>Cadastro de tarefa (escuro)</td>
+    <td align="center"><img src="capturas/22_home_escuro_reaberto.png" width="180"><br>Reaberto no tema escuro</td>
+    <td align="center"><img src="capturas/23_login_escuro.png" width="180"><br>Login (escuro)</td>
+    <td align="center"><img src="capturas/24_cadastro_usuario_escuro.png" width="180"><br>Cadastro de usuário (escuro)</td>
+  </tr>
+</table>
+
+## Vídeo de demonstração
+
+[demonstracao.mp4](demonstracao.mp4)
