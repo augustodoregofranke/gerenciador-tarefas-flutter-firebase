@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "202826762025",
+    "firebase_url": "https://ppdm-p2-default-rtdb.firebaseio.com",
+    "project_id": "ppdm-p2",
+    "storage_bucket": "ppdm-p2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:202826762025:android:5ca1798417cee9568e1938",
+        "android_client_info": {
+          "package_name": "br.edu.unigran.gerenciador_tarefas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDD19S2wmZolv7ogwiKdUB_ylYeTam-9-g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
